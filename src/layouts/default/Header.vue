@@ -7,15 +7,18 @@
       <RButton @click="handleGenerateSchedule" :is-loading="isGeneratingSchedule"
         >Generate Race Schedule</RButton
       >
-      <RButton :is-disabled="isStartRaceDisabled">Start Race</RButton>
+      <RButton @click="handleStartRace" :is-disabled="isStartRaceDisabled">Start Race</RButton>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useRaceResult } from '@/composables/useRaceResult';
 import { useRacingBoardStore } from '@/stores/racingBoard';
-import { ref, computed } from 'vue';
+import { computed, ref } from 'vue';
+
 const racingBoardStore = useRacingBoardStore();
+const { startRace } = useRaceResult();
 
 const isGeneratingSchedule = ref(false);
 
@@ -26,7 +29,12 @@ const isStartRaceDisabled = computed(
 const handleGenerateSchedule = async () => {
   isGeneratingSchedule.value = true;
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  racingBoardStore.setRaceSchedule();
+  await racingBoardStore.setRaceSchedule();
+  racingBoardStore.setScheduleGenerated(true);
   isGeneratingSchedule.value = false;
+};
+
+const handleStartRace = () => {
+  startRace(racingBoardStore.raceScheduleList);
 };
 </script>

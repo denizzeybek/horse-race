@@ -1,7 +1,8 @@
 <template>
   <RaceLayout>
     <template #hippodrome>
-      <Hippodrome />
+      <!-- <Hippodrome /> -->
+      <TestView />
     </template>
     <template #horse-list>
       <HorseList />
@@ -18,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import TestView from '@/views/TestView.vue';
 import RaceLayout from '@/layouts/race/RaceLayout.vue';
 import Hippodrome from '../_components/hippodrome/Hippodrome.vue';
 import HorseList from '../_components/horseList/HorseList.vue';

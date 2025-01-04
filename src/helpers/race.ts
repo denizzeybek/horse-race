@@ -1,5 +1,6 @@
 import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
+import { v4 as uuidv4 } from 'uuid';
 
 const horseNames = [
   'Thunder',
@@ -12,40 +13,6 @@ const horseNames = [
   'Comet',
   'Wind',
   'Flame',
-];
-
-const horseColors = [
-  'Red',
-  'Blue',
-  'Green',
-  'Yellow',
-  'Black',
-  'White',
-  'Brown',
-  'Gray',
-  'Pink',
-  'Purple',
-  'Orange',
-  'Cyan',
-  'Magenta',
-  'Lime',
-  'Teal',
-  'Indigo',
-  'Violet',
-  'Gold',
-  'Silver',
-  'Copper',
-  'Bronze',
-  'Beige',
-  'Lavender',
-  'Maroon',
-  'Olive',
-  'Turquoise',
-  'Coral',
-  'Salmon',
-  'Peach',
-  'Mint',
-  'Champagne',
 ];
 
 const distanceArray = [1200, 1400, 1600, 1800, 2000, 2200];
@@ -61,8 +28,13 @@ export const generateHorseName = () => {
   return `${firstName} ${lastName}`;
 };
 
-export const generateHorseColor = (availableColors: string[]) => {
-  return availableColors[Math.floor(Math.random() * availableColors.length)];
+export const generateHorseColor = () => {
+  const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 };
 
 export const generateHorseSpeed = () => {
@@ -71,17 +43,13 @@ export const generateHorseSpeed = () => {
 
 export const generateHorseList = () => {
   const horseList: IHorse[] = [];
-  const remainingColors = [...horseColors];
 
   for (let i = 0; i < 20; i++) {
-    const color = generateHorseColor(remainingColors);
-    const colorIndex = remainingColors.indexOf(color);
-    if (colorIndex > -1) {
-      remainingColors.splice(colorIndex, 1);
-    }
+    const color = generateHorseColor();
+    
 
     horseList.push({
-      id: i + 1,
+      id: uuidv4(),
       name: generateHorseName(),
       color: color,
       speed: generateHorseSpeed(),
