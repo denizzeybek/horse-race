@@ -1,6 +1,6 @@
 import type { IHorse } from "./horse.interface";
 
-export interface IRound {
+export interface ISchedule {
   round: number;
   distance: number;
   horses: IHorse[];

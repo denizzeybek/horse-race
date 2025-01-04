@@ -1,5 +1,5 @@
 import type { IHorse } from '@/common/interfaces/horse.interface';
-import type { IRound } from '@/common/interfaces/round.interface';
+import type { ISchedule } from '@/common/interfaces/schedule.interface';
 
 const horseNames = [
   'Thunder',
@@ -90,8 +90,8 @@ export const generateHorseList = () => {
   return horseList as IHorse[];
 };
 
-export const generateRaceRounds = (horseArray: IHorse[]) => {
-  const rounds: IRound[] = [];
+export const generateRaceSchedule = (horseArray: IHorse[]) => {
+  const rounds: ISchedule[] = [];
   const horsesCopy = [...horseArray];
 
   for (let i = 0; i < distanceArray.length; i++) {

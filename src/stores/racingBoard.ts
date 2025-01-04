@@ -1,24 +1,26 @@
 import { defineStore } from 'pinia';
 import { EStoreNames } from '@/stores/storeNames';
-import { generateHorseList, generateRaceRounds } from '@/helpers/race';
+import { generateHorseList, generateRaceSchedule } from '@/helpers/race';
 import type { IHorse } from '@/common/interfaces/horse.interface';
-import type { IRound } from '@/common/interfaces/round.interface';
+import type { ISchedule } from '@/common/interfaces/schedule.interface';
 
 
 interface State {
   horseList: IHorse[];
-  roundList: IRound[];
+  raceScheduleList: ISchedule[];
 }
 
 export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
   state: (): State => ({
     horseList: [],
-    roundList: [],
+    raceScheduleList: [],
   }),
   actions: {
     setInitialData() {
       this.horseList = generateHorseList() as IHorse[];
-      this.roundList = generateRaceRounds(this.horseList);
+    },
+    setRaceSchedule() {
+      this.raceScheduleList = generateRaceSchedule(this.horseList);
     },
   },
 });

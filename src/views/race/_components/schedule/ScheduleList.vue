@@ -1,7 +1,7 @@
 <template>
-  <div v-for="(round, idx) in racingBoardStore.roundList" :key="idx">
+  <div v-for="(schedule, idx) in racingBoardStore.raceScheduleList" :key="idx">
     <div class="flex justify-start bg-orange-200 px-4 rounded-md">
-      <RText as="p">{{ `${round.round}. Race ${round.distance}m` }}</RText>
+      <RText as="p">{{ `${schedule.round}. Race ${schedule.distance}m` }}</RText>
     </div>
     <ul class="flex flex-col gap-2 p-0">
       <li
@@ -13,7 +13,7 @@
         <div>Color</div>
       </li>
       <ProgramListItem
-        v-for="(horse, idx) in round.horses"
+        v-for="(horse, idx) in schedule.horses"
         :key="idx"
         :position="idx + 1"
         :horse="horse"

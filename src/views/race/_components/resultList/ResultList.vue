@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(item, idx) in resultList" :key="idx">
+  <!-- <div v-for="(item, idx) in resultList" :key="idx">
     <div class="flex justify-start bg-orange-200 px-4 rounded-md">
       <RText as="p">{{ item.title }}</RText>
     </div>
@@ -12,7 +12,8 @@
       </li>
       <ResultListItem v-for="(program, idx) in item.list" :key="idx" :program="program" />
     </ul>
-  </div>
+  </div> -->
+  asd
 </template>
 
 <script setup lang="ts">
@@ -24,50 +25,50 @@ interface IProgramList {
   list: IProgram[];
 }
 
-const resultList: IProgramList[] = [
-  {
-    title: '1st Lap',
-    list: [
-      {
-        position: 1,
-        horse: {
-          name: 'horse1',
-          condition: 80,
-          color: 'red',
-        },
-      },
-      {
-        position: 2,
-        horse: {
-          name: 'horse2',
-          condition: 90,
-          color: 'blue',
-        },
-      },
-    ],
-  },
-  {
-    title: '2nd Lap',
-    list: [
-      {
-        position: 1,
-        horse: {
-          name: 'horse1',
-          condition: 80,
-          color: 'red',
-        },
-      },
-      {
-        position: 2,
-        horse: {
-          name: 'horse2',
-          condition: 90,
-          color: 'blue',
-        },
-      },
-    ],
-  },
-];
+// const resultList: IProgramList[] = [
+//   {
+//     title: '1st Lap',
+//     list: [
+//       {
+//         position: 1,
+//         horse: {
+//           name: 'horse1',
+//           condition: 80,
+//           color: 'red',
+//         },
+//       },
+//       {
+//         position: 2,
+//         horse: {
+//           name: 'horse2',
+//           condition: 90,
+//           color: 'blue',
+//         },
+//       },
+//     ],
+//   },
+//   {
+//     title: '2nd Lap',
+//     list: [
+//       {
+//         position: 1,
+//         horse: {
+//           name: 'horse1',
+//           condition: 80,
+//           color: 'red',
+//         },
+//       },
+//       {
+//         position: 2,
+//         horse: {
+//           name: 'horse2',
+//           condition: 90,
+//           color: 'blue',
+//         },
+//       },
+//     ],
+//   },
+// ];
 </script>
 
 <style scoped></style>
