@@ -7,26 +7,16 @@
       <div>Condition</div>
       <div>Color</div>
     </li>
-    <HorseListItem v-for="(horse, idx) in horseList" :key="idx" :horse="horse" />
+    <HorseListItem v-for="(horse, idx) in racingBoardStore.horseList" :key="idx" :horse="horse" />
   </ul>
 </template>
 
 <script setup lang="ts">
 import HorseListItem from './HorseListItem.vue';
-import type { IHorse } from '@/common/interfaces/horse.interface';
+import { useRacingBoardStore } from '@/stores/racingBoard';
 
-const horseList: IHorse[] = [
-  {
-    name: 'horse1',
-    condition: 80,
-    color: 'red',
-  },
-  {
-    name: 'horse2',
-    condition: 90,
-    color: 'blue',
-  },
-];
+const racingBoardStore = useRacingBoardStore();
+
 </script>
 
 <style scoped></style>
