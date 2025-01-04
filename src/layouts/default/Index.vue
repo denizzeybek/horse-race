@@ -1,0 +1,12 @@
+<template>
+  <main class="p-0 lg:px-4 lg:py-4">
+    <Header />
+    <div class="px-2 lg:px-0">
+      <RouterView />
+    </div>
+  </main>
+</template>
+
+<script lang="ts" setup>
+import Header from './Header.vue';
+</script>
