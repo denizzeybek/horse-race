@@ -53,6 +53,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
       this.horseList = generateHorseList() as IHorse[];
     },
     setRaceSchedule() {
+      this.clearResults();
       this.raceScheduleList = generateRaceSchedule(this.horseList);
     },
     clearResults() {

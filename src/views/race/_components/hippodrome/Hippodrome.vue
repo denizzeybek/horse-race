@@ -33,7 +33,7 @@
       </div>
   
       <!-- Kontrol Butonları -->
-      <!-- <div class="flex space-x-4">
+      <div class="flex space-x-4">
         <button
           @click="startRace"
           :disabled="isRaceInProgress"
@@ -48,7 +48,7 @@
         >
           Sıfırla
         </button>
-      </div> -->
+      </div>
     </div>
   </template>
   
