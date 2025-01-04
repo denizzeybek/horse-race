@@ -1,4 +1,4 @@
 export enum ERouteNames {
-  Race = 'Race',
+  RaceView = 'RaceView',
 }
 

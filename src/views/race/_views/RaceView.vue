@@ -1,14 +1,14 @@
 <template>
   <RaceLayout>
     <template #hippodrome>
-      <RText as="h5">Hippodrome</RText>
+      <Hippodrome />
     </template>
     <template #horse-list>
       <HorseList />
     </template>
 
-    <template #programs>
-      <ProgramList />
+    <template #schedule>
+      <ScheduleList />
     </template>
 
     <template #results>
@@ -19,9 +19,10 @@
 
 <script setup lang="ts">
 import RaceLayout from '@/layouts/race/RaceLayout.vue';
+import Hippodrome from '../_components/hippodrome/Hippodrome.vue';
 import HorseList from '../_components/horseList/HorseList.vue';
-import ProgramList from '../_components/programList/ProgramList.vue';
 import ResultList from '../_components/resultList/ResultList.vue';
+import ScheduleList from '../_components/schedule/ScheduleList.vue';
 </script>
 
 <style scoped></style>

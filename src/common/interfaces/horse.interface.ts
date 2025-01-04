@@ -1,5 +1,6 @@
 export interface IHorse {
+  id: string;
   name: string;
-  condition: number;
   color: string;
+  speed: number;
 }

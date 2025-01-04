@@ -1,7 +1,7 @@
 <template>
-  <div v-for="(item, idx) in racingBoardStore.groupedResults" :key="idx">
+  <div v-for="(schedule, idx) in racingBoardStore.raceScheduleList" :key="idx">
     <div class="flex justify-start bg-orange-200 px-4 rounded-md">
-      <RText as="p">{{ `${item.round}. Race ${item.distance}m` }}</RText>
+      <RText as="p">{{ `${schedule.round}. Race ${schedule.distance}m` }}</RText>
     </div>
     <ul class="flex flex-col gap-2 p-0">
       <li
@@ -12,13 +12,18 @@
         <div>Condition</div>
         <div>Color</div>
       </li>
-      <ResultListItem v-for="(result, idx) in item.results" :key="idx" :result="result" />
+      <ProgramListItem
+        v-for="(horse, idx) in schedule.horses"
+        :key="idx"
+        :position="idx + 1"
+        :horse="horse"
+      />
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import ResultListItem from './ResultListItem.vue';
+import ProgramListItem from './ScheduleListItem.vue';
 import { useRacingBoardStore } from '@/stores/racingBoard';
 
 const racingBoardStore = useRacingBoardStore();
