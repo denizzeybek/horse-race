@@ -4,7 +4,7 @@
     <div class="text-center lg:text-left">{{ position }}</div>
     <div class="text-center lg:text-left">{{ horse.name }}</div>
     <div class="text-center lg:text-left">{{ horse.speed }}</div>
-    <div class="text-center lg:text-left">
+    <div class="flex justify-center lg:justify-start">
       <RColorCell :color="horse.color" />
     </div>
   </RListItem>

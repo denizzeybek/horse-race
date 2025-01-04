@@ -3,7 +3,7 @@
   <RListItem class="lg:grid-rows-1 grid-rows-3 lg:grid-cols-4">
     <div class="lg:col-span-2 text-center lg:text-left">{{ horse.name }}</div>
     <div class="text-center lg:text-left">{{ horse.speed }}</div>
-    <div class="text-center lg:text-left">
+    <div class="flex justify-center lg:justify-start">
       <RColorCell :color="horse.color" />
     </div>
   </RListItem>
@@ -13,9 +13,8 @@
 import type { IHorse } from '@/common/interfaces/horse.interface';
 
 interface IProps {
-    horse: IHorse
+  horse: IHorse;
 }
 
 defineProps<IProps>();
-
 </script>

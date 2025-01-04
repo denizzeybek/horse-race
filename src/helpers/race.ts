@@ -13,6 +13,36 @@ const horseNames = [
   'Comet',
   'Wind',
   'Flame',
+  'Majesty',
+  'Phantom',
+  'Eclipse',
+  'Bolt',
+  'Dash',
+  'Mirage',
+  'Vortex',
+  'Meteor',
+  'Charger',
+  'Starlight',
+  'Tornado',
+  'Inferno',
+  'Dusk',
+  'Aurora',
+  'Galaxy',
+  'Raven',
+  'Zephyr',
+  'Echo',
+  'Cinder',
+  'Fury',
+  'Onyx',
+  'Crystal',
+  'Sky',
+  'Blizzard',
+  'Ember',
+  'Hurricane',
+  'Sapphire',
+  'Ash',
+  'Jet',
+  'Nimbus',
 ];
 
 const distanceArray = [1200, 1400, 1600, 1800, 2000, 2200];
@@ -30,11 +60,11 @@ export const generateHorseName = () => {
 
 export const generateHorseColor = () => {
   const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 };
 
 export const generateHorseSpeed = () => {
@@ -46,7 +76,6 @@ export const generateHorseList = () => {
 
   for (let i = 0; i < 20; i++) {
     const color = generateHorseColor();
-    
 
     horseList.push({
       id: uuidv4(),
@@ -81,4 +110,4 @@ export const generateRaceSchedule = (horseArray: IHorse[]) => {
   }
 
   return rounds;
-}
+};

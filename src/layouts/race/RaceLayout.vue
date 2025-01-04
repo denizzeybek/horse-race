@@ -1,8 +1,6 @@
 <template>
   <section class="flex flex-col gap-4 my-8">
-    <div class="bg-green-300 p-4">
-      <slot name="hippodrome" />
-    </div>
+    <slot name="hippodrome" />
 
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
       <RCard title="Horse List">

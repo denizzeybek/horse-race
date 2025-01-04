@@ -1,138 +1,59 @@
 <template>
-  <!-- {{ racingBoardStore.raceRounds }} -->
-    <div class="flex flex-col items-center p-4 space-y-6">
-      <!-- Yarış Wrapper -->
-      <div class="relative w-full max-w-4xl border border-gray-300 rounded-lg overflow-hidden">
-        <!-- Bitiş Çizgisi -->
+  <template v-for="(round, index) in racingBoardStore.raceScheduleList" :key="index">
+    <div
+      v-if="index === racingBoardStore.currentRound"
+      class="mb-5 border border-gray-300 rounded-lg overflow-hidden bg-green-300 p-4"
+    >
+      <div class="p-2 bg-gray-100 border-b border-gray-300 font-bold">
+        Round {{ index + 1 }} - {{ round.distance }}m
+      </div>
+      <div class="!border-r-8 border-t-0 border-b-0 border-l-0 border-solid border-red-600">
         <div
-          ref="finishLine"
-          class="absolute top-0 bottom-0 right-0 w-[2px] bg-red-500"
-        ></div>
-  
-        <!-- Her bir atın satırı -->
-        <div
-          v-for="(horse, index) in horses"
+          v-for="(horse, idx) in round.horses"
           :key="horse.id"
-          class="flex items-center border-b last:border-0"
+          class="h-12 border-b border-dashed border-gray-200 relative"
         >
-          <!-- Kulvar Numarası -->
-          <div class="w-16 h-12 flex items-center justify-center bg-gray-100 text-gray-800 font-bold border-r">
-            {{ index + 1 }}
+          <div
+            class="bg-r-white px-2 rounded-md left-0 h-12 w-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2"
+          >
+            {{ idx + 1 }}
           </div>
-  
-          <!-- Atın Koşu Alanı -->
-          <div class="relative flex-1 h-12">
+          <div
+            class="absolute flex items-center gap-2 h-full px-1.5"
+            style="left: 60px"
+            :style="getHorsePositionStyle(horse, index)"
+          >
             <div
-              :style="{ transform: `translateX(${horse.position}px)` }"
-              class="absolute top-0 left-0 h-10 w-10 bg-blue-500 text-white flex items-center justify-center rounded-full shadow-md transition-transform duration-200"
+              class="h-12 w-12 rounded-full flex items-center justify-center"
+              :style="{ backgroundColor: horse.color }"
             >
-              🐎
+              <div class="">🏇</div>
             </div>
+            <span class="text-sm whitespace-nowrap">{{ horse.name }}</span>
           </div>
         </div>
       </div>
-  
-      <!-- Kontrol Butonları -->
-      <div class="flex space-x-4">
-        <button
-          @click="startRace"
-          :disabled="isRaceInProgress"
-          class="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 disabled:opacity-50"
-        >
-          Yarışı Başlat
-        </button>
-        <button
-          @click="resetRace"
-          :disabled="isRaceInProgress"
-          class="bg-gray-500 text-white font-semibold py-2 px-4 rounded hover:bg-gray-600 disabled:opacity-50"
-        >
-          Sıfırla
-        </button>
-      </div>
     </div>
   </template>
-  
-  <script lang="ts" setup>
-  import { ref, computed, onMounted, nextTick } from "vue";
-  import { useRacingBoardStore } from '@/stores/racingBoard';
+</template>
 
-  const racingBoardStore = useRacingBoardStore();
-  
-  interface Horse {
-    id: number;
-    position: number; // Atın pozisyonunu piksel olarak temsil eder
-  }
-  
-  const horses = ref<Horse[]>([]);
-  const isRaceInProgress = ref(false);
-  const finishLinePosition = ref(0);
-  
-  // Yarışın bitip bitmediğini kontrol eden bir computed property
-  const isRaceFinished = computed(() =>
-    horses.value.every((horse) => horse.position >= finishLinePosition.value)
-  );
-  
-  // Yarışı başlat
-  const startRace = () => {
-    if (isRaceInProgress.value) return;
-  
-    isRaceInProgress.value = true;
-  
-    const interval = setInterval(() => {
-      horses.value = horses.value.map((horse) => ({
-        ...horse,
-        position: Math.min(horse.position + Math.random() * 50, finishLinePosition.value), // Hız artırıldı
-      }));
-  
-      // Tüm atlar bitiş çizgisine ulaşmadan yarış bitmeyecek
-      if (isRaceFinished.value) {
-        clearInterval(interval);
-        isRaceInProgress.value = false; // Yarış bittiğinde kontrol
-        alert("Yarış Bitti! 🎉"); // İsteğe bağlı: Yarışın bittiğini bildir
-      }
-    }, 100); // Daha hızlı güncelleme için süre 100ms'ye indirildi
+<script lang="ts" setup>
+import type { IHorse } from '@/common/interfaces/horse.interface';
+import { useRaceResult } from '@/composables/useRaceResult';
+import { useRacingBoardStore } from '@/stores/racingBoard';
+import { onMounted } from 'vue';
 
+const racingBoardStore = useRacingBoardStore();
+const { getHorsePosition } = useRaceResult();
+
+const getHorsePositionStyle = (horse: IHorse, roundIndex: number) => {
+  return {
+    transform: `translateX(${getHorsePosition(horse, roundIndex)})`,
+    transition: 'transform 0.03s linear',
+  };
 };
 
-// Yarışı sıfırla
-const resetRace = () => {
-      console.log('horses.value ', horses.value);
-    horses.value = horses.value.map((horse) => ({
-      ...horse,
-      position: 0,
-    }));
-    isRaceInProgress.value = false;
-  };
-  
-  // Bitiş çizgisinin konumunu hesapla
-  const finishLine = ref<HTMLElement | null>(null);
-  const calculateFinishLinePosition = () => {
-    if (finishLine.value) {
-    const wrapper = finishLine.value.offsetParent as HTMLElement;
-    if (wrapper) {
-      const wrapperWidth = wrapper.clientWidth; // Wrapper genişliği
-      finishLinePosition.value = wrapperWidth; // Bitiş çizgisi pozisyonu, sağ kenar
-    }
-  }
-    console.log('finishLinePosition.value ', finishLinePosition.value);
-  };
-  
-  // İlk yükleme sırasında atları oluştur ve bitiş çizgisini hesapla
-  onMounted(() => {
-    horses.value = Array.from({ length: 10 }, (_, i) => ({
-      id: i + 1,
-      position: 0,
-    }));
-    nextTick(() => {
-      calculateFinishLinePosition();
-    });
-
-    racingBoardStore.setInitialData();
-  });
-  
-  window.addEventListener("resize", calculateFinishLinePosition); // Responsive hesaplama
-  </script>
-  
-  <style scoped>
-  /* Responsive ve görsel uyumluluk için temel düzenlemeler */
-  </style>
+onMounted(() => {
+  racingBoardStore.setInitialData();
+});
+</script>

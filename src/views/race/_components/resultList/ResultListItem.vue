@@ -3,7 +3,7 @@
     <div class="text-center lg:text-left">{{ result.position }}</div>
     <div class="text-center lg:text-left">{{ result.horse.name }}</div>
     <div class="text-center lg:text-left">{{ result.horse.speed }}</div>
-    <div class="text-center lg:text-left">
+    <div class="flex justify-center lg:justify-start">
       <RColorCell :color="result.horse.color" />
     </div>
   </RListItem>
