@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 px-4 bg-r-white rounded-md flex flex-col gap-2">
+  <div class="py-4 px-4 bg-r-white rounded-md flex flex-col gap-2 overflow-y-auto">
     <div class="flex justify-center py-3 rounded-md" :class="[variant]">
       {{ title }}
     </div>

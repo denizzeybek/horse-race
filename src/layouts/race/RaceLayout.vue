@@ -11,9 +11,9 @@
         </template>
       </RCard>
 
-      <RCard title="Programs">
+      <RCard title="Race Schedule">
         <template #body>
-          <slot name="programs" />
+          <slot name="schedule" />
         </template>
       </RCard>
 
