@@ -49,7 +49,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     },
   },
   actions: {
-    setInitialData() {
+    setHorseList() {
       this.horseList = generateHorseList() as IHorse[];
     },
     setRaceSchedule() {
@@ -76,9 +76,6 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     },
     setCurrentRound(value: number) {
       this.currentRound = value;
-    },
-    setActiveRoundHorses(horses: { [key: string]: number }) {
-      this.activeRoundHorses = horses;
     },
     updateHorsePosition(horseId: string, position: number) {
       this.activeRoundHorses[horseId] = position;

@@ -21,8 +21,6 @@ export const useRaceResult = () => {
     const round = raceSchedule[racingBoardStore.currentRound];
     const roundResults: IResult[] = [];
 
-    // Reset horse positions
-    racingBoardStore.setActiveRoundHorses({});
     round.horses.forEach((horse) => {
       racingBoardStore.updateHorsePosition(horse.id, 0);
     });
