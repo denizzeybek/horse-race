@@ -28,7 +28,7 @@ const isStartRaceDisabled = computed(
 
 const handleGenerateSchedule = async () => {
   isGeneratingSchedule.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
   await racingBoardStore.setRaceSchedule();
   racingBoardStore.setScheduleGenerated(true);
   isGeneratingSchedule.value = false;

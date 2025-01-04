@@ -11,6 +11,7 @@ interface State {
   raceResults: IResult[];
   isScheduleGenerated: boolean;
   isRaceStarted: boolean;
+  isRaceEnded: boolean;
   currentRound: number;
   activeRoundHorses: { [key: string]: number };
 }
@@ -22,6 +23,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     raceResults: [],
     isScheduleGenerated: false,
     isRaceStarted: false,
+    isRaceEnded: false,
     currentRound: 0,
     activeRoundHorses: {},
   }),
@@ -47,6 +49,9 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
         {} as { [key: number]: { round: number; distance: number; results: IResult[] } },
       );
     },
+    getRoundWinners: (state) => {
+      return state.raceResults.filter((result) => result.position === 1);
+    },
   },
   actions: {
     setHorseList() {
@@ -58,6 +63,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     },
     clearResults() {
       this.raceResults = [];
+      this.isRaceEnded = false;
     },
     addResults(results: IResult[]) {
       const round = results[0]?.round;
@@ -79,6 +85,15 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     },
     updateHorsePosition(horseId: string, position: number) {
       this.activeRoundHorses[horseId] = position;
+    },
+    setRaceEnded(value: boolean) {
+      this.isRaceEnded = value;
+    },
+    clearRaceState() {
+      this.clearResults();
+      this.isRaceStarted = false;
+      this.currentRound = 0;
+      this.activeRoundHorses = {};
     },
   },
 });

@@ -7,6 +7,7 @@ export const useRaceResult = () => {
   const racingBoardStore = useRacingBoardStore();
 
   const startRace = (raceSchedule: ISchedule[]) => {
+    racingBoardStore.clearRaceState();
     racingBoardStore.setRaceStarted(true);
     racingBoardStore.clearResults();
     racingBoardStore.setCurrentRound(0);
@@ -15,6 +16,7 @@ export const useRaceResult = () => {
 
   const animateRace = (raceSchedule: ISchedule[]) => {
     if (racingBoardStore.currentRound >= raceSchedule.length) {
+      racingBoardStore.setRaceEnded(true);
       return;
     }
 
@@ -59,6 +61,8 @@ export const useRaceResult = () => {
           racingBoardStore.setCurrentRound(racingBoardStore.currentRound + 1);
           if (racingBoardStore.currentRound < raceSchedule.length) {
             animateRace(raceSchedule);
+          } else {
+            racingBoardStore.setRaceEnded(true);
           }
         }, 2000);
       }
