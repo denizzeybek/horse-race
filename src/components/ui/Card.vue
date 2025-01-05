@@ -1,7 +1,7 @@
 <template>
   <div class="py-4 px-4 bg-r-white rounded-md flex flex-col gap-2">
     <div class="flex justify-center py-3 rounded-md" :class="[variant]">
-      {{ title }}
+      <RText as="p" className="!text-r-white">{{ title }}</RText>
     </div>
     <div class="overflow-y-auto lg:max-h-[490px]">
       <slot name="body" />

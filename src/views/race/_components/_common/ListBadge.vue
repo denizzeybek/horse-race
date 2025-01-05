@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start bg-orange-200 px-4 rounded-md">
+  <div class="flex justify-start py-3 bg-orange-200 px-4 rounded-md">
     <RText as="p">{{ message }}</RText>
   </div>
 </template>

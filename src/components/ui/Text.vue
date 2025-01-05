@@ -42,7 +42,7 @@ h5,
 h6,
 p,
 a {
-  @apply text-r-black;
+  @apply text-r-black p-0 m-0;
 }
 
 h1 {
@@ -50,23 +50,23 @@ h1 {
 }
 
 h2 {
-  @apply text-xl font-semibold;
+  @apply text-3xl font-semibold;
 }
 
 h3 {
-  @apply text-xl font-normal;
+  @apply text-2xl font-semibold;
 }
 
 h4 {
-  @apply text-base font-semibold;
+  @apply text-xl font-semibold;
 }
 
 h5 {
-  @apply text-base font-normal;
+  @apply text-lg font-semibold;
 }
 
 h6 {
-  @apply text-sm font-semibold;
+  @apply text-base font-semibold;
 }
 
 p {

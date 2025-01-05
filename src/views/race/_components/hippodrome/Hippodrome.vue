@@ -4,8 +4,8 @@
       v-if="index === racingBoardStore.currentRound"
       class="border border-gray-300 rounded-lg overflow-hidden bg-green-300 p-4"
     >
-      <div class="p-2 bg-gray-100 border-b border-gray-300 font-bold">
-        Round {{ index + 1 }} - {{ round.distance }}m
+      <div class="p-3 bg-gray-100 border-b border-gray-300 font-bold">
+        <RText as="h5"> Round {{ index + 1 }} - {{ round.distance }}m </RText>
       </div>
       <div class="!border-r-8 border-t-0 border-b-0 border-l-0 border-solid border-red-600">
         <div
@@ -17,7 +17,7 @@
           <div
             class="bg-r-white px-2 rounded-md left-0 h-12 w-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2"
           >
-            {{ idx + 1 }}
+            <RText as="p">{{ idx + 1 }}</RText>
           </div>
           <div
             class="absolute flex items-center gap-2 h-full px-1.5 transition-transform duration-[30ms] ease-linear left-[60px]"
@@ -29,7 +29,7 @@
             >
               <div class="-scale-x-[1]">🏇</div>
             </div>
-            <span class="text-sm whitespace-nowrap">{{ horse.name }}</span>
+            <RText as="p">{{ horse.name }}</RText>
           </div>
         </div>
       </div>

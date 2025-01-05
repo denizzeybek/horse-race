@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col lg:flex-row justify-between items-center bg-r-white rounded-md pb-5 lg:pb-0 px-5 sticky top-0 z-10"
+    class="flex flex-col lg:flex-row justify-between items-center gap-2 bg-r-white rounded-md py-3 lg: px-5 sticky top-0 z-10"
   >
     <RText as="h2">Horse Racing</RText>
     <div class="flex gap-2">
