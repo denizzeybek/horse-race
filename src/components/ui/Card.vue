@@ -12,7 +12,7 @@
 <script setup lang="ts">
 interface IProps {
   title: string;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary';
 }
 
 withDefaults(defineProps<IProps>(), {

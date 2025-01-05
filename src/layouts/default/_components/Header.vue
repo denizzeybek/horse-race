@@ -1,16 +1,29 @@
 <template>
   <div
-    class="flex flex-col lg:flex-row justify-between items-center gap-2 bg-r-white rounded-md py-3 lg: px-5 sticky top-0 z-10"
+    class="flex flex-col lg:flex-row justify-between items-center gap-2 bg-r-white rounded-md py-3 px-5 sticky top-0 z-10 mx-2 lg:mx-0"
   >
     <RText as="h2">Horse Racing</RText>
-    <div class="flex gap-2">
-      <RButton @click="handleGenerateNewHorses" :is-disabled="isRaceNotFinished"
-        >Generate New Horses</RButton
+    <div class="flex gap-2 flex-wrap">
+      <RButton
+        class="flex-1 lg:flex-none"
+        @click="handleGenerateNewHorses"
+        :is-disabled="isRaceNotFinished"
+        >Generate New Horses
+      </RButton>
+      <RButton
+        class="flex-1 lg:flex-none"
+        @click="handleGenerateSchedule"
+        :is-disabled="isRaceNotFinished"
+        :is-loading="isGeneratingSchedule"
+        >Generate Race Schedule
+      </RButton>
+      <RButton
+        class="flex-1 lg:flex-none"
+        @click="handleStartRace"
+        :is-disabled="isStartRaceDisabled"
       >
-      <RButton @click="handleGenerateSchedule" :is-disabled="isRaceNotFinished" :is-loading="isGeneratingSchedule"
-        >Generate Race Schedule</RButton
-      >
-      <RButton @click="handleStartRace" :is-disabled="isStartRaceDisabled">Start Race</RButton>
+        {{ racingBoardStore.isRaceStarted ? 'ReStart Race' : 'Start Race' }}
+      </RButton>
     </div>
   </div>
 </template>
