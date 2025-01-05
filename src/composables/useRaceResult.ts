@@ -2,9 +2,11 @@ import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { IResult } from '@/common/interfaces/result.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
 import { useRacingBoardStore } from '@/stores/racingBoard';
+import { useRToast } from '@/composables/useRToast';
 
 export const useRaceResult = () => {
   const racingBoardStore = useRacingBoardStore();
+  const { showSuccessMessage } = useRToast();
 
   const startRace = async (raceSchedule: ISchedule[]) => {
     racingBoardStore.clearRaceState();
@@ -40,19 +42,15 @@ export const useRaceResult = () => {
     const labelWidth = 64;
     const riderWidth = 48;
 
-    console.log('hippodromeWidth', hippodromeWidth);
-
     const raceWidth = hippodromeWidth - labelWidth - riderWidth;
-    console.log('raceWidth', raceWidth);
 
     const interval = setInterval(() => {
-      round.horses.forEach((horse, idx) => {
+      round.horses.forEach((horse) => {
         const currentDistance = racingBoardStore.activeRoundHorses[horse.id] || 0;
 
-        console.log(racingBoardStore.activeRoundHorses[round.horses[idx].id]);
-        const speed = (horse.speed / 100) * 100;
-        // racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed);
-        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed);
+        const speed = horse.speed;
+
+        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed + 400);
       });
 
       const allHorsesFinished = round.horses.every((horse) => {
@@ -89,6 +87,7 @@ export const useRaceResult = () => {
             animateRace(raceSchedule);
           } else {
             racingBoardStore.setRaceEnded(true);
+            showSuccessMessage('Race finished');
           }
         }, 1000);
       }
@@ -97,7 +96,7 @@ export const useRaceResult = () => {
 
   const getHorsePosition = (horse: IHorse, roundIndex: number): string => {
     if (roundIndex !== racingBoardStore.currentRound) {
-      return '0%';
+      return '0px';
     }
     return `${racingBoardStore.activeRoundHorses[horse.id] || 0}px`;
   };
