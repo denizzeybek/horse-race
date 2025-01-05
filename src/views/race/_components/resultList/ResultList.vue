@@ -4,7 +4,7 @@
       <ListBadge :message="`${item.round}. Race ${item.distance}m`" />
 
       <ul class="flex flex-col gap-2 p-0">
-        <ResultListHeader class="hidden lg:block" />
+        <ResultListHeader />
         <ResultListItem v-for="(result, idx) in item.results" :key="idx" :result="result" />
       </ul>
     </div>
