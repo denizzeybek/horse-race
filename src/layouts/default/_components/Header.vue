@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useRaceResult } from '@/composables/useRaceResult';
+import { useRace } from '@/composables/useRace';
 import { useRacingBoardStore } from '@/stores/racingBoard';
 import { computed, ref } from 'vue';
 
 const racingBoardStore = useRacingBoardStore();
-const { startRace } = useRaceResult();
+const { startRace } = useRace();
 
 const isGeneratingSchedule = ref(false);
 

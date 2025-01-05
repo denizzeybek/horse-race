@@ -1,10 +1,10 @@
 import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { IResult } from '@/common/interfaces/result.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
-import { useRacingBoardStore } from '@/stores/racingBoard';
 import { useRToast } from '@/composables/useRToast';
+import { useRacingBoardStore } from '@/stores/racingBoard';
 
-export const useRaceResult = () => {
+export const useRace = () => {
   const racingBoardStore = useRacingBoardStore();
   const { showSuccessMessage } = useRToast();
 
@@ -50,7 +50,7 @@ export const useRaceResult = () => {
 
         const speed = horse.speed;
 
-        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed + 400);
+        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed);
       });
 
       const allHorsesFinished = round.horses.every((horse) => {

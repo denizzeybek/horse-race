@@ -7,7 +7,7 @@
       <div class="p-2 bg-gray-100 border-b border-gray-300 font-bold">
         Round {{ index + 1 }} - {{ round.distance }}m
       </div>
-      <div  class="!border-r-8 border-t-0 border-b-0 border-l-0 border-solid border-red-600">
+      <div class="!border-r-8 border-t-0 border-b-0 border-l-0 border-solid border-red-600">
         <div
           v-for="(horse, idx) in round.horses"
           :key="horse.id"
@@ -38,13 +38,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useRaceResult } from '@/composables/useRaceResult';
+import { useRace } from '@/composables/useRace';
 import { useRacingBoardStore } from '@/stores/racingBoard';
 import { onMounted } from 'vue';
 
 const racingBoardStore = useRacingBoardStore();
 
-const { getHorsePositionStyle } = useRaceResult();
+const { getHorsePositionStyle } = useRace();
 
 onMounted(() => {
   racingBoardStore.setHorseList();

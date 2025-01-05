@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import RaceLayout from '@/layouts/race/RaceLayout.vue';
+import RaceLayout from '@/layouts/race/Index.vue';
 import Hippodrome from '@/views/race/_components/hippodrome/Hippodrome.vue';
 import HorseList from '@/views/race/_components/horseList/HorseList.vue';
 import ResultList from '@/views/race/_components/resultList/ResultList.vue';
