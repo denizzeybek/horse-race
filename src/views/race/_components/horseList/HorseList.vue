@@ -1,6 +1,6 @@
 <template>
   <ul class="flex flex-col gap-2 p-0">
-    <HorseListHeader />
+    <HorseListHeader class="hidden lg:block" />
     <HorseListItem v-for="(horse, idx) in racingBoardStore.horseList" :key="idx" :horse="horse" />
   </ul>
 </template>

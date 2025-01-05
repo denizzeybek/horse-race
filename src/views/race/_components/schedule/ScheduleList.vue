@@ -4,7 +4,7 @@
       <ListBadge :message="`${schedule.round}. Race ${schedule.distance}m`" />
 
       <ul class="flex flex-col gap-2 p-0">
-        <ScheduleListHeader />
+        <ScheduleListHeader class="hidden lg:block"/>
         <ScheduleListItem
           v-for="(horse, idx) in schedule.horses"
           :key="idx"
