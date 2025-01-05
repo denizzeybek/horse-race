@@ -22,7 +22,7 @@
       </ul>
     </div>
   </template>
-  <RSkeleton v-else />
+  <RListEmpty v-else message="No Data" />
 </template>
 
 <script setup lang="ts">
