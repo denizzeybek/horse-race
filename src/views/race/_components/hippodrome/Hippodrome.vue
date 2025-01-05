@@ -59,7 +59,6 @@ onMounted(() => {
   try {
     racingBoard = JSON.parse(storage);
     if (!racingBoard?.horseList?.length) {
-      console.log('here');
       racingBoardStore.setHorseList();
     }
   } catch (error) {
