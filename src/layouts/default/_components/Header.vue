@@ -23,7 +23,10 @@ const { startRace } = useRace();
 const isGeneratingSchedule = ref(false);
 
 const isStartRaceDisabled = computed(
-  () => !racingBoardStore.raceScheduleList.length || isGeneratingSchedule.value,
+  () =>
+    !racingBoardStore.raceScheduleList.length ||
+    isGeneratingSchedule.value ||
+    racingBoardStore.isRaceEnded,
 );
 
 const handleGenerateSchedule = async () => {
