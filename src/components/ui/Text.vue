@@ -6,31 +6,31 @@
 </template>
 
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { computed } from 'vue'
+import type { HTMLAttributes } from 'vue';
+import { computed } from 'vue';
 
 interface IProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'info' | 'ps'
-  className?: HTMLAttributes['class']
-  innerText?: any
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'info' | 'ps';
+  className?: HTMLAttributes['class'];
+  innerText?: any;
 }
 const props = withDefaults(defineProps<IProps>(), {
-  as: 'p'
-})
+  as: 'p',
+});
 
-const tag = computed(() => (['info', 'ps'].includes(props.as) ? 'p' : props.as))
+const tag = computed(() => (['info', 'ps'].includes(props.as) ? 'p' : props.as));
 const classes = computed(() => {
-  const cls = [props.className]
+  const cls = [props.className];
   switch (props.as) {
     case 'info':
-      cls.unshift('info')
-      break
+      cls.unshift('info');
+      break;
     case 'ps':
-      cls.unshift('ps')
-      break
+      cls.unshift('ps');
+      break;
   }
-  return cls
-})
+  return cls;
+});
 </script>
 
 <style scoped lang="scss">
@@ -42,7 +42,7 @@ h5,
 h6,
 p,
 a {
-  @apply text-r-black;
+  @apply text-r-black p-0 m-0;
 }
 
 h1 {
@@ -50,23 +50,23 @@ h1 {
 }
 
 h2 {
-  @apply text-xl font-semibold;
+  @apply text-3xl font-semibold;
 }
 
 h3 {
-  @apply text-xl font-normal;
+  @apply text-2xl font-semibold;
 }
 
 h4 {
-  @apply text-base font-semibold;
+  @apply text-xl font-semibold;
 }
 
 h5 {
-  @apply text-base font-normal;
+  @apply text-lg font-semibold;
 }
 
 h6 {
-  @apply text-sm font-semibold;
+  @apply text-base font-semibold;
 }
 
 p {

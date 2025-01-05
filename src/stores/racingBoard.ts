@@ -2,7 +2,7 @@ import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { IResult } from '@/common/interfaces/result.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
 import { generateHorseList, generateRaceSchedule } from '@/helpers/race';
-import { EStoreNames } from '@/stores/storeNames';
+import { EStoreNames } from '@/common/enums/storeNames';
 import { defineStore } from 'pinia';
 
 interface State {
@@ -28,10 +28,8 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     activeRoundHorses: {},
   }),
   getters: {
-    groupedResults: (
-      state,
-    ): { [key: number]: { round: number; distance: number; results: IResult[] } } => {
-      return state.raceResults.reduce(
+    groupedResults: (state) => {
+      const grouped = state.raceResults.reduce(
         (acc, result) => {
           const round: number = result.round!;
           if (!acc[round]) {
@@ -48,6 +46,8 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
         },
         {} as { [key: number]: { round: number; distance: number; results: IResult[] } },
       );
+
+      return Object.values(grouped);
     },
     getRoundWinners: (state) => {
       return state.raceResults.filter((result) => result.position === 1);

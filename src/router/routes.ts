@@ -1,10 +1,10 @@
-import { ERouteNames } from '@/router/routeNames';
+import { ERouteNames } from '@/common/enums/routeNames';
 import type { RouteRecordRaw } from 'vue-router';
 
 // LAYOUTS
 import DefaultLayout from '@/layouts/default/Index.vue';
 
-import RaceView from '@/views/race/_views/RaceView.vue';
+import RaceView from '@/views/race/Index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -17,7 +17,6 @@ const routes: RouteRecordRaw[] = [
         name: ERouteNames.RaceView,
         component: RaceView,
       },
-
     ],
   },
 ];

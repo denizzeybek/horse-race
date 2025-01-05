@@ -1,8 +1,14 @@
 <template>
   <RListItem class="lg:grid-rows-1 grid-rows-4 lg:grid-cols-4">
-    <div class="text-center lg:text-left">{{ result.position }}</div>
-    <div class="text-center lg:text-left">{{ result.horse.name }}</div>
-    <div class="text-center lg:text-left">{{ result.horse.speed }}</div>
+    <div class="text-center lg:text-left">
+      <RText as="p">{{ result.position }}</RText>
+    </div>
+    <div class="text-center lg:text-left">
+      <RText as="p">{{ result.horse.name }}</RText>
+    </div>
+    <div class="text-center lg:text-left">
+      <RText as="p">{{ result.horse.speed }}</RText>
+    </div>
     <div class="flex justify-center lg:justify-start">
       <RColorCell :color="result.horse.color" />
     </div>
