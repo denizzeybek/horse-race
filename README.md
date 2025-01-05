@@ -39,7 +39,7 @@ The application is deployed at [horse-race-app.netlify.app](https://horse-race-a
 1. Clone the repository:
    ```bash
    git clone <repository_url>
-   cd horse-racing-app
+   cd horse-race
    ```
 
 2. Install dependencies:
@@ -52,7 +52,7 @@ The application is deployed at [horse-race-app.netlify.app](https://horse-race-a
    yarn dev
    ```
 
-4. Open your browser and navigate to `http://localhost:3000` to view the app.
+4. Open your browser and navigate to `http://localhost:5173` to view the app.
 
 ### Build for Production
 To build the app for production:
