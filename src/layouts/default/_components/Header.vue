@@ -4,7 +4,9 @@
   >
     <RText as="h2">Horse Racing</RText>
     <div class="flex gap-2">
-      <RButton @click="handleGenerateNewHorses" :is-disabled="isGenerateNewHorsesDisabled">Generate New Horses</RButton>
+      <RButton @click="handleGenerateNewHorses" :is-disabled="isGenerateNewHorsesDisabled"
+        >Generate New Horses</RButton
+      >
       <RButton @click="handleGenerateSchedule" :is-loading="isGeneratingSchedule"
         >Generate Race Schedule</RButton
       >
@@ -32,7 +34,7 @@ const isStartRaceDisabled = computed(
 
 const isGenerateNewHorsesDisabled = computed(() => {
   return racingBoardStore.isRaceStarted && !racingBoardStore.isRaceEnded;
-})
+});
 
 const handleGenerateSchedule = async () => {
   isGeneratingSchedule.value = true;
