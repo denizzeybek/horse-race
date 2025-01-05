@@ -9,11 +9,7 @@
         <div class="flex-1 space-y-6 py-1">
           <div class="space-y-3">
             <div class="grid grid-cols-3 gap-4">
-              <div
-                v-for="i in columns"
-                :key="i"
-                class="h-2.5 bg-gray-400 rounded col-span-1"
-              ></div>
+              <div v-for="i in columns" :key="i" class="h-2.5 bg-gray-400 rounded col-span-1"></div>
             </div>
           </div>
         </div>
@@ -32,6 +28,6 @@ interface IProps {
 
 withDefaults(defineProps<IProps>(), {
   columns: 3,
-  rows: 8
+  rows: 8,
 });
 </script>

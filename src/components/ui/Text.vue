@@ -6,31 +6,31 @@
 </template>
 
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { computed } from 'vue'
+import type { HTMLAttributes } from 'vue';
+import { computed } from 'vue';
 
 interface IProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'info' | 'ps'
-  className?: HTMLAttributes['class']
-  innerText?: any
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'info' | 'ps';
+  className?: HTMLAttributes['class'];
+  innerText?: any;
 }
 const props = withDefaults(defineProps<IProps>(), {
-  as: 'p'
-})
+  as: 'p',
+});
 
-const tag = computed(() => (['info', 'ps'].includes(props.as) ? 'p' : props.as))
+const tag = computed(() => (['info', 'ps'].includes(props.as) ? 'p' : props.as));
 const classes = computed(() => {
-  const cls = [props.className]
+  const cls = [props.className];
   switch (props.as) {
     case 'info':
-      cls.unshift('info')
-      break
+      cls.unshift('info');
+      break;
     case 'ps':
-      cls.unshift('ps')
-      break
+      cls.unshift('ps');
+      break;
   }
-  return cls
-})
+  return cls;
+});
 </script>
 
 <style scoped lang="scss">

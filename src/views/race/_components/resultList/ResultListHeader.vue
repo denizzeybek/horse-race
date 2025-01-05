@@ -8,4 +8,3 @@
     <div>Color</div>
   </RListItem>
 </template>
-

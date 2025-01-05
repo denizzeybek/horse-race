@@ -1,7 +1,7 @@
-import type { IHorse } from "./horse.interface";
+import type { IHorse } from './horse.interface';
 
 export interface IResult {
-    round?: number;
-    horse: IHorse;
-    position: number;
-  }
+  round?: number;
+  horse: IHorse;
+  position: number;
+}

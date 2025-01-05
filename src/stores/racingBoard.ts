@@ -46,7 +46,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
         },
         {} as { [key: number]: { round: number; distance: number; results: IResult[] } },
       );
-      
+
       return Object.values(grouped);
     },
     getRoundWinners: (state) => {

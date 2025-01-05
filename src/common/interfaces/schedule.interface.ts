@@ -1,4 +1,4 @@
-import type { IHorse } from "./horse.interface";
+import type { IHorse } from './horse.interface';
 
 export interface ISchedule {
   round?: number;
