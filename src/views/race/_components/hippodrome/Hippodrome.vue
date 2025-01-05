@@ -27,7 +27,7 @@
               class="h-12 w-12 rounded-full flex items-center justify-center"
               :style="{ backgroundColor: horse.color }"
             >
-              <div class="" :class="racingBoardStore.isRaceStarted ? 'animate-bounce-up-down' : ''">
+              <div :class="racingBoardStore.isRaceStarted ? 'animate-bounce-up-down' : ''">
                 <img src="@/assets/images/race-horse.png" alt="horse" class="w-5 h-5" />
               </div>
             </div>
