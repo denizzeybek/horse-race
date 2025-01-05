@@ -2,7 +2,7 @@ import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { IResult } from '@/common/interfaces/result.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
 import { generateHorseList, generateRaceSchedule } from '@/helpers/race';
-import { EStoreNames } from '@/stores/storeNames';
+import { EStoreNames } from '@/common/enums/storeNames';
 import { defineStore } from 'pinia';
 
 interface State {

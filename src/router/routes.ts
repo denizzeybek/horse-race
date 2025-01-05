@@ -1,4 +1,4 @@
-import { ERouteNames } from '@/router/routeNames';
+import { ERouteNames } from '@/common/enums/routeNames';
 import type { RouteRecordRaw } from 'vue-router';
 
 // LAYOUTS
