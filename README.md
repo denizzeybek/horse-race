@@ -1,57 +1,90 @@
-# Vue3 TypeScript Boilerplate with Ant Design Vue and Tailwind CSS
+# Horse Racing Application
 
-Welcome to this VueJS 3 boilerplate project, featuring a robust set of technologies to streamline your development process. Built with VueJS 3, TypeScript, Pinia state management, Ant Design Vue for UI components, and Tailwind CSS for styling, this boilerplate provides a solid foundation for creating modern and scalable web applications.
+![Screenshot](./public/readme-img.jpeg)
 
-Several UI components are integrated into this project, offering additional functionality and ease of use. Whether you are a seasoned developer or just starting with VueJS, this project offers a structured and efficient starting point for your next endeavor. Feel free to explore the codebase, contribute, and customize as needed. Happy coding!
+## Overview
+This is a horse racing application built using Vue 3, TypeScript, Pinia, and TailwindCSS. The app allows users to generate a list of 20 unique horses, run a race consisting of 6 laps, and view the results for each lap and the overall race.
+
+
+
+## Features
+- **Generate Horses**: Randomly generate 20 horses with unique names, colors, and scores (1-100).
+- **Random Selection**: Select 10 horses randomly for each lap.
+- **Lap System**: The race includes 6 laps with increasing distances:
+  - Lap 1: 1200 meters
+  - Lap 2: 1400 meters
+  - Lap 3: 1600 meters
+  - Lap 4: 1800 meters
+  - Lap 5: 2000 meters
+  - Lap 6: 2200 meters
+- **Animated Race**: Animate horses during each lap of the race.
+- **Results Display**: View results for each lap and the overall race.
 
 ## Technologies Used
+- **Frontend**: Vue.js 3 with TypeScript
+- **State Management**: Pinia
+- **Styling**: TailwindCSS
 
-- VueJS v3
-- Vite
-- Typescript
-- Pinia
-- Vue Router
-- Ant Design Vue
-- Tailwind CSS
-- Axios
-- EsLint - Prettier
-- UI Components based on Ant Design
+## Deployment
 
-## Getting Started
+The application is deployed at [horse-race-app.netlify.app](https://horse-race-app.netlify.app/).
 
-You can start by running the following commands in the project root directory:
+## Setup Instructions
 
+### Prerequisites
+- Node.js (LTS version recommended)
+- Yarn (package manager)
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd horse-racing-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+
+3. Start the development server:
+   ```bash
+   yarn dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:3000` to view the app.
+
+### Build for Production
+To build the app for production:
 ```bash
-# Clone the project
-git clone https://github.com/denizzeybek/vue3-ts-boilerplate.git
-
-# Install the necessary packages
-yarn install
+yarn build
 ```
+The compiled files will be located in the `dist` folder.
 
-Or you can use this project as a template by clicking the 'Use this template' button above.
-
-## Development
-
-To start the development server, use the following command:
-
-```bash
-yarn dev
-```
-
-## Synchronize From Template Repository
-
-To synchronize your local repository with the latest changes from this template, simply execute the following commands:
-
-```bash
-npx update-template https://github.com/denizzeybek/vue3-ts-boilerplate.git
-```
-
-
-## ESLint
-
-The project is configured to use ESLint for code quality checks. To run ESLint, use the following command:
-
+### Lint and Format Code
+To lint and format the codebase:
 ```bash
 yarn lint
 ```
+
+
+## Usage Instructions
+1. **Generate Horses**:
+   - Click the **"Generate Schedule"** button to generate a list of 20 unique horses.
+
+2. **Start the Race**:
+   - Click the **"Start Race"** button to begin the race.
+   - Horses will be selected randomly for each lap and animated as they progress.
+
+3. **View Results**:
+   - After each lap, the results will be displayed in a list.
+   - The final results of the race will be shown after all laps are completed.
+
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Happy Racing!
+
