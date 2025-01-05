@@ -19,10 +19,10 @@
 
 <script setup lang="ts">
 import RaceLayout from '@/layouts/race/RaceLayout.vue';
-import Hippodrome from '../_components/hippodrome/Hippodrome.vue';
-import HorseList from '../_components/horseList/HorseList.vue';
-import ResultList from '../_components/resultList/ResultList.vue';
-import ScheduleList from '../_components/schedule/ScheduleList.vue';
+import Hippodrome from '@/views/race/_components/hippodrome/Hippodrome.vue';
+import HorseList from '@/views/race/_components/horseList/HorseList.vue';
+import ResultList from '@/views/race/_components/resultList/ResultList.vue';
+import ScheduleList from '@/views/race/_components/schedule/ScheduleList.vue';
 </script>
 
 <style scoped></style>

@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from 'vue-router';
 // LAYOUTS
 import DefaultLayout from '@/layouts/default/Index.vue';
 
-import RaceView from '@/views/race/_views/RaceView.vue';
+import RaceView from '@/views/race/Index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
