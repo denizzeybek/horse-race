@@ -1,8 +1,8 @@
+import { EStoreNames } from '@/common/enums/storeNames';
 import type { IHorse } from '@/common/interfaces/horse.interface';
 import type { IResult } from '@/common/interfaces/result.interface';
 import type { ISchedule } from '@/common/interfaces/schedule.interface';
 import { generateHorseList, generateRaceSchedule } from '@/helpers/race';
-import { EStoreNames } from '@/common/enums/storeNames';
 import { defineStore } from 'pinia';
 
 interface State {
@@ -27,6 +27,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     currentRound: 0,
     activeRoundHorses: {},
   }),
+  persist: true, // Tüm state'leri persist et
   getters: {
     groupedResults: (state) => {
       const grouped = state.raceResults.reduce(
@@ -58,7 +59,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
       this.horseList = generateHorseList() as IHorse[];
     },
     setRaceSchedule() {
-      this.clearResults();
+      this.clearAll();
       this.raceScheduleList = generateRaceSchedule(this.horseList);
     },
     clearResults() {
@@ -95,6 +96,19 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
       this.isRaceStarted = false;
       this.currentRound = 0;
       this.activeRoundHorses = {};
+    },
+    clearAll() {
+      this.raceScheduleList = [];
+      this.raceResults = [];
+      this.isScheduleGenerated = false;
+      this.isRaceStarted = false;
+      this.isRaceEnded = false;
+      this.currentRound = 0;
+      this.activeRoundHorses = {};
+    },
+    resetRace() {
+      this.clearAll();
+      this.setHorseList();
     },
   },
 });

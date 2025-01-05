@@ -4,6 +4,7 @@
   >
     <RText as="h2">Horse Racing</RText>
     <div class="flex gap-2">
+      <RButton @click="handleGenerateNewHorses" :is-disabled="isGenerateNewHorsesDisabled">Generate New Horses</RButton>
       <RButton @click="handleGenerateSchedule" :is-loading="isGeneratingSchedule"
         >Generate Race Schedule</RButton
       >
@@ -29,6 +30,10 @@ const isStartRaceDisabled = computed(
     racingBoardStore.isRaceEnded,
 );
 
+const isGenerateNewHorsesDisabled = computed(() => {
+  return racingBoardStore.isRaceStarted && !racingBoardStore.isRaceEnded;
+})
+
 const handleGenerateSchedule = async () => {
   isGeneratingSchedule.value = true;
   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -39,5 +44,9 @@ const handleGenerateSchedule = async () => {
 
 const handleStartRace = () => {
   startRace(racingBoardStore.raceScheduleList);
+};
+
+const handleGenerateNewHorses = () => {
+  racingBoardStore.resetRace();
 };
 </script>
