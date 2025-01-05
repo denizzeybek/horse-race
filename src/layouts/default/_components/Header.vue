@@ -4,10 +4,10 @@
   >
     <RText as="h2">Horse Racing</RText>
     <div class="flex gap-2">
-      <RButton @click="handleGenerateNewHorses" :is-disabled="isGenerateNewHorsesDisabled"
+      <RButton @click="handleGenerateNewHorses" :is-disabled="isRaceNotFinished"
         >Generate New Horses</RButton
       >
-      <RButton @click="handleGenerateSchedule" :is-loading="isGeneratingSchedule"
+      <RButton @click="handleGenerateSchedule" :is-disabled="isRaceNotFinished" :is-loading="isGeneratingSchedule"
         >Generate Race Schedule</RButton
       >
       <RButton @click="handleStartRace" :is-disabled="isStartRaceDisabled">Start Race</RButton>
@@ -32,7 +32,7 @@ const isStartRaceDisabled = computed(
     racingBoardStore.isRaceEnded,
 );
 
-const isGenerateNewHorsesDisabled = computed(() => {
+const isRaceNotFinished = computed(() => {
   return racingBoardStore.isRaceStarted && !racingBoardStore.isRaceEnded;
 });
 
