@@ -27,6 +27,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     currentRound: 0,
     activeRoundHorses: {},
   }),
+  persist: true, // Tüm state'leri persist et
   getters: {
     groupedResults: (state) => {
       const grouped = state.raceResults.reduce(

@@ -49,6 +49,20 @@ const racingBoardStore = useRacingBoardStore();
 const { getHorsePositionStyle } = useRace();
 
 onMounted(() => {
-  racingBoardStore.setHorseList();
+  const storage = localStorage.getItem('racingBoard');
+  let racingBoard;
+  if (!storage) {
+    racingBoardStore.setHorseList();
+    return;
+  }
+  try {
+    racingBoard = JSON.parse(storage);
+    if (!racingBoard?.horseList?.length) {
+      racingBoardStore.setHorseList();
+    }
+  } catch (error) {
+    console.error('Failed to parse localStorage data:', error);
+    racingBoardStore.setHorseList();
+  }
 });
 </script>
