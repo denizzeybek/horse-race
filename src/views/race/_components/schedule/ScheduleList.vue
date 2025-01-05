@@ -1,19 +1,11 @@
 <template>
   <template v-if="racingBoardStore.raceScheduleList.length > 0">
     <div v-for="(schedule, idx) in racingBoardStore.raceScheduleList" :key="idx">
-      <div class="flex justify-start bg-orange-200 px-4 rounded-md">
-        <RText as="p">{{ `${schedule.round}. Race ${schedule.distance}m` }}</RText>
-      </div>
+      <ListBadge :message="`${schedule.round}. Race ${schedule.distance}m`" />
+
       <ul class="flex flex-col gap-2 p-0">
-        <li
-          class="items-center hidden gap-2 px-12 mb-2 text-sm font-normal rounded-lg lg:grid-rows-1 lg:grid grid-cols-4 text-r-secondary"
-        >
-          <div>Position</div>
-          <div>Name</div>
-          <div>Condition</div>
-          <div>Color</div>
-        </li>
-        <ProgramListItem
+        <ScheduleListHeader />
+        <ScheduleListItem
           v-for="(horse, idx) in schedule.horses"
           :key="idx"
           :position="idx + 1"
@@ -26,9 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import ProgramListItem from './ScheduleListItem.vue';
+import ScheduleListItem from './ScheduleListItem.vue';
 import { useRacingBoardStore } from '@/stores/racingBoard';
-
+import ListBadge from '@/views/race/_components/_common/ListBadge.vue';
+import ScheduleListHeader from './ScheduleListHeader.vue';
 const racingBoardStore = useRacingBoardStore();
 </script>
 
