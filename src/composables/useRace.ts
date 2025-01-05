@@ -50,7 +50,7 @@ export const useRace = () => {
 
         const speed = horse.speed;
 
-        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed+400);
+        racingBoardStore.updateHorsePosition(horse.id, currentDistance + speed);
       });
 
       const allHorsesFinished = round.horses.every((horse) => {
