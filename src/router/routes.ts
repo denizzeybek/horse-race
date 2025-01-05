@@ -17,7 +17,6 @@ const routes: RouteRecordRaw[] = [
         name: ERouteNames.RaceView,
         component: RaceView,
       },
-
     ],
   },
 ];
