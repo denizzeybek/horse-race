@@ -76,6 +76,7 @@ export const useRacingBoardStore = defineStore(EStoreNames.RACING_BOARD, {
     },
     setScheduleGenerated(value: boolean) {
       this.isScheduleGenerated = value;
+      this.setCurrentRound(0);
     },
     setRaceStarted(value: boolean) {
       this.isRaceStarted = value;
