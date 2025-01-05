@@ -24,6 +24,7 @@ This is a horse racing application built using Vue 3, TypeScript, Pinia, and Tai
 - **Frontend**: Vue.js 3 with TypeScript
 - **State Management**: Pinia
 - **Styling**: TailwindCSS
+- **Storage**: Pinia Plugin Persistedstate
 
 ## Deployment
 
