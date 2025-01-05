@@ -22,7 +22,7 @@
         @click="handleStartRace"
         :is-disabled="isStartRaceDisabled"
       >
-        {{ racingBoardStore.isRaceStarted ? 'ReStart Race' : 'Start Race' }}
+        Start Race
       </RButton>
     </div>
   </div>
@@ -41,8 +41,8 @@ const isGeneratingSchedule = ref(false);
 const isStartRaceDisabled = computed(
   () =>
     !racingBoardStore.raceScheduleList.length ||
-    isGeneratingSchedule.value ||
-    racingBoardStore.isRaceEnded,
+    racingBoardStore.isRaceStarted ||
+    racingBoardStore.isRaceEnded
 );
 
 const isRaceNotFinished = computed(() => {
